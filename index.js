@@ -16,8 +16,8 @@ app.get('*', function (req, res) {
 });
 
 app.listen(PORT, (error) => {
-  if(!error)
-    console.log("Server running, app listening on port", PORT)
+  if(error)
+    console.log(`Error in starting server: ${error}`);
   else
-    console.log("Error:", error);
+    console.log(`App started on port ${PORT}`);
 });
