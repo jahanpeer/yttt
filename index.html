@@ -4,9 +4,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Youtube shortener</title>
 </head>
 <body>
   URL shortner for Youtube
+  <br><br>
+  <label>Youtube URL</label>
+  <input type="text" id="youtube-url">
+  <button onclick="genUrl()">Generate url</button>
+  <br><br>
+
+  <div id="result" style="visibility: hidden;">
+    <input id="url" readonly>
+    <a id="hyper-url"></a>
+    <button onclick="copy()">Copy</button>
+  </div>
+
+  
+  <script>
+    const genUrl = () => {
+      let youtubeUrl = document.getElementById("youtube-url").value;
+      let query = youtubeUrl.substring(32);
+      let url = "https://y.outube.ml/" + query;
+      document.getElementById("url").value = url;
+      document.getElementById("hyper-url").value = url;
+      document.getElementById("hyper-url").href = url;
+      document.getElementById("result").style.visibility = "visible";
+    };
+
+    const copy = () => {
+      let url = document.getElementById("url");
+      url.select();
+      url.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(url.value);
+    };
+  </script>
 </body>
 </html>
